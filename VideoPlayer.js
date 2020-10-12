@@ -87,6 +87,8 @@ export default class VideoPlayer extends Component {
       onBack: this.props.onBack || this._onBack.bind(this),
       onEnd: this.props.onEnd || this._onEnd.bind(this),
       onScreenTouch: this._onScreenTouch.bind(this),
+      onLongPress: this._onLongPress.bind(this),
+      onPressOut: this._onPressOut.bind(this),
       onEnterFullscreen: this.props.onEnterFullscreen,
       onExitFullscreen: this.props.onExitFullscreen,
       onShowControls: this.props.onShowControls,
@@ -303,7 +305,12 @@ export default class VideoPlayer extends Component {
       }, this.props.doubleTapTime);
     }
   }
-
+_onLongPress(){
+this.methods.togglePlayPause();
+}
+_onPressOut(){
+this.methods.togglePlayPause();
+}
   /**
     | -------------------------------------------------------
     | Methods
@@ -1186,7 +1193,8 @@ export default class VideoPlayer extends Component {
   render() {
     return (
       <TouchableWithoutFeedback
-        onPress={this.events.onScreenTouch}
+        onPressOut={this.events.onPressOut}
+        onLongPress={this.events.onLongPress}
         style={[styles.player.container, this.styles.containerStyle]}>
         <View style={[styles.player.container, this.styles.containerStyle]}>
           <Video
