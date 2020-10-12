@@ -1194,7 +1194,7 @@ this.methods.togglePlayPause();
     return (
       <TouchableWithoutFeedback
         onPressOut={this.events.onPressOut}
-        onLongPress={this.events.onLongPress}
+        onPressIn={this.events.onLongPress}
         style={[styles.player.container, this.styles.containerStyle]}>
         <View style={[styles.player.container, this.styles.containerStyle]}>
           <Video
