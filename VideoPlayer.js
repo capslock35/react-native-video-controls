@@ -509,6 +509,17 @@ this.methods.togglePlayPause();
     this.setState(state);
   }
 
+  _pause() {
+    let state = this.state;
+    state.paused = true
+    this.setState(state);
+  }
+
+  _play() {
+    let state = this.state;
+    state.paused = false
+    this.setState(state);
+  }
   /**
    * Toggle between showing time remaining or
    * video duration in the timer control
@@ -1193,8 +1204,6 @@ this.methods.togglePlayPause();
   render() {
     return (
       <TouchableWithoutFeedback
-        onPressOut={this.events.onPressOut}
-        onPressIn={this.events.onLongPress}
         style={[styles.player.container, this.styles.containerStyle]}>
         <View style={[styles.player.container, this.styles.containerStyle]}>
           <Video
